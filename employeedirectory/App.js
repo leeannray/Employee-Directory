@@ -1,5 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
+// import Alert from "./components/Alert";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+// function App() {
+//   return <Alert type="danger">Invalid user id or password</Alert>;
+// }
+
+export default App;
