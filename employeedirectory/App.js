@@ -1,8 +1,17 @@
 import React from "react";
-// import Alert from "./components/Alert";
 
-// function App() {
-//   return <Alert type="danger">Invalid user id or password</Alert>;
-// }
+
+function App() {
+    return (
+        <div className="App">
+
+            <Navbar />
+            <Header />
+            <Form />
+            <Footer />
+
+        </div>
+    )
+}
 
 export default App;
