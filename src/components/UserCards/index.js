@@ -23,7 +23,9 @@ function UserCard(props) {
           </li>
         </ul>
       </div>
-      <span className="remove">𝘅</span>
+      <span onClick={() => props.removeFriend(props.id)} className="remove">
+        𝘅
+      </span>
     </div>
   );
 }
