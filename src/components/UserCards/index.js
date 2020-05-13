@@ -1,14 +1,19 @@
 import React from "react";
 import "./index.css";
+// import Header from './Header/Header.js';
+// import Navbar from './Navbar/Navbar.js';
+// import Table from './Table/Table.js';
 
 function UserCard(props) {
   return (
-    <div className="card">
-      <div className="img-container">
-        <img alt={props.name} src={props.image} />
-      </div>
-      <div className="content">
-        <ul>
+    <div className="card text-center">
+      <div className="card-header">
+        <div className="card-header">
+          <h2>{props.heading}</h2>
+        </div>
+        <div className='card-body'>{props.children}</div>
+      {/* <div className="content"></div> */}
+        {/* <ul>
           <li>
             <strong>Name:</strong> {props.name}
           </li>
@@ -27,12 +32,10 @@ function UserCard(props) {
         𝘅
       </span>
     </div>
-  );
-}
+  ); */}
+      </div>
+      </div>
+);
+};
 
 export default UserCard;
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
