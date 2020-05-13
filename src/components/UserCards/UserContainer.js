@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import UserContainer from "./Container";
+import UserCard from "./UserCard";
 import Row from "./Row";
 import Col from "./Col";
-import Card from "./Card";
+import Card from "./UserCard";
 import SearchForm from "./SearchForm";
 import UserDetail from "./UserDetail";
 // import API from "../utils/API";
 
-class SearchContainer extends Component {
+class UserContainer extends Component {
   state = {
     result: {},
     search: "",
@@ -43,30 +43,34 @@ class SearchContainer extends Component {
       <Container>
         <Row>
           <Col size="md-8">
-            <Card
-              heading={this.state.result.Name || "Search for an Employee or User to Begin"}
+            <UserCard
+              heading={
+                this.state.result.Name ||
+                "Search for an Employee or User to Begin"
+              }
             >
               {this.state.result.Title ? (
-                <MovieDetail
-                  title={this.state.result.Name}
-                  src={this.state.result.Title}
-                  director={this.state.result.Id}
-                  genre={this.state.result.Email}
-                  released={this.state.result.Manager}
+                <Userdetail
+                  name={this.state.result.Name}
+                  title={this.state.result.Title}
+                  Id={this.state.result.Id}
+                  email={this.state.result.Email}
+                  manager={this.state.result.Manager}
+                  manager={this.state.result.Department}
                 />
               ) : (
                 <h3>No Results to Display</h3>
               )}
-            </Card>
+            </UserCard>
           </Col>
           <Col size="md-4">
-            <Card heading="Search">
+            <UserCard heading="Search">
               <SearchForm
                 value={this.state.search}
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
               />
-            </Card>
+            </UserCard>
           </Col>
         </Row>
       </Container>

@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+// import "./index.css";
 // import Header from './Header/Header.js';
 // import Navbar from './Navbar/Navbar.js';
 // import Table from './Table/Table.js';

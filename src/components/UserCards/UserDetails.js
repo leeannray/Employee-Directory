@@ -5,11 +5,11 @@ function UserDetail(props) {
     <div className="text-center">
       <img
         alt={props.name}
-        className="container-fluid"
+        className="img-fluid"
         src={props.src}
         style={{ margin: "0 auto" }}
       />
-      <h3>User/Employee: {props.director}</h3>
+      <h3>User or Employee: {props.director}</h3>
       <h3>Title: {props.title}</h3>
       <h3>Department: {props.department}</h3>
     </div>

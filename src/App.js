@@ -1,8 +1,16 @@
-import React, { Component } from "react";
-import UserCard from "./components/UserCards/index.js";
-import Wrapper from "./components/Wrapper/index.js";
-import Title from "./components/Title/index.js";
-import users from "./users.json";
+import React from "react";
+import OmdbContainer from "./components/OmdbContainer";
+
+function App() {
+  return <OmdbContainer />;
+}
+
+export default App;
+// import React, { Component } from "react";
+// import UserCard from "./components/UserCards/UserCard.js";
+// import Wrapper from "./components/Wrapper/index.js";
+// import Title from "./components/Title/index.js";
+// import users from "./users.json";
 
 // class App extends Component {
 //   // Setting this.state.Users to the users json array
