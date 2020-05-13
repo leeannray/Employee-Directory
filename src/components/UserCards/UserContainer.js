@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import UserCard from "./UserCard";
 import Row from "./Row";
 import Col from "./Col";
-import Card from "./UserCard";
+import UserCard from "./UserCard";
 import SearchForm from "./SearchForm";
-import UserDetail from "./UserDetail";
-// import API from "../utils/API";
+import UserDetail from "./UserDetails";
+import API from "../utils/API";
 
 class UserContainer extends Component {
   state = {
@@ -16,6 +16,7 @@ class UserContainer extends Component {
   // When this component mounts, search for the user ""
   componentDidMount() {
     this.searchUsers("");
+    //add name to above
   }
 
   searchUsers = (query) => {
@@ -33,7 +34,7 @@ class UserContainer extends Component {
   };
 
   // When the form is submitted, search the employee "database" for the value of `this.state.search`
-  handleFormSubmit = (event) => {
+  handleFormSubmit = event => {
     event.preventDefault();
     this.searchUsers(this.state.search);
   };
