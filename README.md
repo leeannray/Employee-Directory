@@ -10,7 +10,7 @@ For this assignment, you'll create a employee directory with React. This assignm
 
 * AS A user
 * I WANT to be able to view my entire employee directory at once
-* SO THAT I have quick access to their information.
+* SO THAT I have quick access to their information, including name, title, department, and email.
 
 ## Business Context
 
