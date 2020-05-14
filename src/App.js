@@ -63,18 +63,18 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Col lg={8} md={7} sm={4} lgOffset={2}>
-        <Col lg={6}>
+      <Container lg={8} md={7} sm={4} lgOffset={2}>
+        <Container lg={6}>
           <SearchBar
             onSearch={this.onSearch}
             userData={this.state.filteredUser}
             onUserClick={this.onUserClick}
           />
-        </Col>
-        <Col lg={6}>
+        </Container>
+        <Container lg={6}>
           <UserCard selectedUser={this.state.selectedUser} />
-        </Col>
-      </Col>
+        </Container>
+      </Container>
     );
   }
 };
@@ -171,4 +171,4 @@ export default class App extends React.Component {
 //   }
 // };
 
-export default App;
+// export default App;
