@@ -1,92 +1,99 @@
-import axios from "axios";
+import React from "react";
+import ReactDOM from "react-dom";
 
-componentDidMount() {
-  axios.get(
-    'https://randomuser.me/api/?results=10&inc=name,registered&nat=us'
-  )
-    .then(json => json.data.results.map(result => (
-      {
-        name: `${result.name.first} ${result.name.last}`,
-        id: result.registered
-      }
-    )
-    )
-    )
-    .then(newData => this.setState(
-      { users: newData, store: newData }
-    ))
-  .catch (
-  error => alert(error)
-  );
-};
-
-filterNames(e){
-  this.setState({
-    users: this.state.store.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()
-    ));
-  }
-  )
-};
-
-export default class UserList extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {person: []};
+class UserProfiles extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      users: [],
+    };
   }
 
-  componentDidMount() {
-    this.UserList();
-  }
-
-  UserList() {
-    $.getJSON('https://randomuser.me/api/')
-      .then(({ results }) => this.setState({ person: results }));
+  componentWillMount() {
+    fetch("https://randomuser.me/api/?results=50")
+      .then((response) => {
+        if (response.ok) return response.json();
+        throw new Error("Request failed.");
+      })
+      .then((data) => {
+        this.setState({ users: data.results });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   render() {
-    const persons = this.state.person.map((item, i) => (
-      <div>
-        <h1>{ item.name.first }</h1>
-        <span>{ item.cell }, { item.email }</span>
-      </div>
-    ));
-
+    const list = this.state.users.map((u, i) => {
+      return (
+        <User
+          key={u.login.md5}
+          name={`${u.name.first} ${u.name.last}`}
+          email={u.email}
+        />
+      );
+    });
     return (
-      <div id="layout-content" className="layout-content-wrapper">
-        <div className="panel-list">{ persons }</div>
+      <div>
+        <h1>My users are:</h1>
+        {list}
       </div>
     );
   }
-};
-// class App extends React.Component {
-//   state = {
-//     users,
-//     first: 1,
-//     last: 1,
-//     email: 1,
-//     sort: "",
-//     search: ""
+}
 
-//   }
+class User extends React.Component {
+  render() {
+    return (
+      <div style={{ borderStyle: "dotted" }}>
+        <h3>{this.props.name}</h3>
+        <p>{this.props.email}</p>
+      </div>
+    );
+  }
+}
 
-//   handleNameSort = (name, order) => {
-//     this.setState({
-//       users: this.state.users.sort((a, b) => (a.name[name] > b.name[name] ? order : -order))
-//     });
-//   }
+ReactDOM.render(<UserProfiles />, document.getElementById("root"));
 
-//   handleSort = (name, order) => {
-//     this.setState({
-//       users: this.state.users.sort((a, b) => (a[name] > b[name] ? order : -order))
-//     });
-//   }
+// import axios from "axios";
+// const proxyurl = "https://cors-anywhere.herokuapp.com/";
+// // const baseurl = "https://randomuser.me/api/?results=50&inc=name,registered&nat=us";
+// import React, { Component } from "react";
+// import { BrowserRouter, Switch } from 'react-router-dom';
 
-//   searchFilter = (name) => {
-//     this.setState({
-//       users: users.filter(person => {
-//         returnperson.name.first.toLowerCase().includes(name.toLowerCase())
-//           || person.name.last.toLowerCase().includes(name.toLowerCase())
-//           || PerformanceResourceTiming.email.replace(/\D/g, "").includes(name)
-//           || person.email.includes(name)
-//       }),
+// export class App extends Component {
+//          constructor(props) {
+//            super(props);
+//            this.state = {
+//              person: [],
+//            }
+//             componentDidMount() {
+//            axios
+//              .get(
+//                proxyurl + baseurl)
+//              .then((json) =>
+//                json.data.results.map((result) => ({
+//                  name: `${result.name.first} ${result.name.last}`,
+//                  id: result.registered,
+//                }))
+//              )
+//              .then((newData) =>
+//                this.setState({ users: newData, store: newData })
+//              )
+//              .catch((error) => alert(error));
+//          }
+
+//          filterNames(e) {
+//            this.setState({
+//              users: this.state.store.filter((item) =>
+//                item.name.toLowerCase().includes(e.target.value.toLowerCase())
+//              ),
+//            });
+//          }
+
+//          sortList = (key) => {
+//            let arrayCopy = [...this.state.users];
+//            arrayCopy.sort((a, b) => a.name[key] > b.name[key]);
+//            this.setState({ users: arrayCopy });
+//          };
+//        };
