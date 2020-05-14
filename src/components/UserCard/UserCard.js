@@ -1,31 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
 // import "./index.css";
 // import Header from './Header/Header.js';
 // import Navbar from './Navbar/Navbar.js';
 // import Table from './Table/Table.js';
 
-function UserCard(props) {
-  return (
-    <div className="UserCard">
-      <div className="card text-center">
-        <h1 className="card-header" onClick={props.sortByName}>User Name</h1>
-      </div>
-      <div className='card-body'>{props.results.map(result => (
-        <div className="card" key={result.key}>
-          <span className="card-header">{result.name}</span>
-          <span className="email" ><a href={result.email}>{result.email}</a></span>
-          <span className="title">{result.title}</span>
-        </div>
-      ))
-      }
-      </div>
-    </div>
-  );
-}
+// function UserCard(props) {
+//   return (
+//     <div className="UserCard">
+//       <div className="card text-center">
+//         <h1 className="card-header" onClick={props.sortByName}>User Name</h1>
+//       </div>
+//       <div className='card-body'>{props.results.map(result => (
+//         <div className="card" key={result.key}>
+//           <span className="card-header">{result.name}</span>
+//           <span className="email" ><a href={result.email}>{result.email}</a></span>
+//           <span className="title">{result.title}</span>
+//         </div>
+//       ))
+//       }
+//       </div>
+//     </div>
+//   );
+// }
 
-import React, {Component} from 'react';
-
-class RandomUser extends Component {
+class UserCard extends Component {
     constructor() {
         super();
         this.state = {
@@ -37,7 +35,7 @@ class RandomUser extends Component {
 
     componentDidMount() {
         this.setState({ isLoading: true });
-        this.fetchRandomUser();        
+        this.fetchRandomUser();
     }
 
     fetchRandomUser = async() => {
@@ -49,14 +47,14 @@ class RandomUser extends Component {
             .then(data => {
                 let user = data.results.map((user) => {
                     let userElm = '';
-                    
+
                     if (typeof user !== undefined && typeof user.name !== undefined && typeof user.picture != undefined) {
                         userElm = <div key={user}>
                             <h2>{user.name.first} {user.name.last}</h2>
                             <img src={user.picture.large} alt="" />
                             </div>;
                     }
-                    
+
                     return(userElm)
                 });
 
@@ -74,7 +72,7 @@ class RandomUser extends Component {
         if (error) {
             return <p>{error.message}</p>;
           }
-          
+
         if (isLoading) {
             return <p>Loading...</p>;
           }

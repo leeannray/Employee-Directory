@@ -1,5 +1,5 @@
 componentDidMount(){
-  axios.get('https://randomuser.me/api/?results=10&inc=name,registered&nat=fr')
+  axios.get('https://randomuser.me/api/?results=50&inc=name,registered&nat=us')
   .then(json => json.data.results.map(result => (
     {
       name: `${result.name.first} ${result.name.last}`,
