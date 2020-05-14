@@ -1,14 +1,14 @@
-// import React from "react";
+import React from "react";
 
-// function AppContainer(props) {
-//   return (
-//     <div className={`container${props.fluid ? "-fluid" : ""}`}>
-//       {props.children}
-//     </div>
-//   );
-// }
+function Container(props) {
+    return (
+    <div className="container uk-flex uk-flex-column uk-flex-middle">
+        {props.children}
+    </div>
+    );
+}
 
-// export default AppContainer;
+export default Container;
 
 // export NavbarBrand from "../NavbarBrand/Navbar";
 // export AppSwitch from "../Switch/Switch";
