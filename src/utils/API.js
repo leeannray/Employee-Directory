@@ -1,18 +1,12 @@
-import React from "react";
-
-class API extends React.Component {
-  constructor(props) {
-    console.log(props);
-    super(props);
-    this.state = {
-      dataObj: props.dataObject,
-    };
-    console.log(this.state.dataObject);
-  }
-
-  render() {
-    return <p>""</p>;
-  }
+componentDidMount(){
+  axios.get('https://randomuser.me/api/?results=10&inc=name,registered&nat=fr')
+  .then(json => json.data.results.map(result => (
+    {
+      name: `${result.name.first} ${result.name.last}`,
+      id: result.registered
+    })))
+  .then(newData => this.setState({users: newData, store: newData}))
+  .catch(error => alert(error))
 }
 
 export default API;

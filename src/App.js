@@ -1,25 +1,13 @@
-import API from "./API";
+import axios from "axios";
 
-class App extends Component {
-  componentDidMount() {
-    this.fetchData();
-  }
-
-  fetchData() {
-    const url = "https://randomuser.me/api/?results=50&nat=us,dk,fr,gb";
-    return fetch(url)
-      .then((response) => response.json())
-      .then((parsedJSON) => this.setState({ results: parsedJSON.results }))
-      .catch((error) => console.log(error));
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <API dataObject={this.state.results} />
-      </div>
-    );
-  }
+componentDidMount(){
+  axios.get('https://randomuser.me/api/?results=10&inc=name,registered&nat=fr')
+  .then(json => json.data.results.map(result => (
+    {
+      name: `${result.name.first} ${result.name.last}`,
+      id: result.registered
+    })))
+  .then(newData => console.log(newData))
 }
 
 export default App;
