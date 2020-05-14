@@ -4,7 +4,7 @@ import './App.css';
 
 import UserList from './components/UserList/UserList';
 import SearchBar from './components/SearchBar/SearchBar';
-import Navbar from './components/Navbar';
+import Navbar from './components/AppNavbarBrand/Navbar';
 
 class App extends React.Component {
   state = {
