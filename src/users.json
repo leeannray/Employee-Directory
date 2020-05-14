@@ -1,8 +1,51 @@
-[{
-    "Id": "id",
-    "Name": "name",
-    "Title": "title",
-    "Department": "department",
-    "Manager": "manager",
-    "Email": "email"
-}]
+[
+  {
+    "id": "t1",
+    "name": "Lee Ann",
+    "department": "Software Development",
+    "title": "Junior Developer",
+    "email": "leeann@company.ie"
+      },
+  {
+    "id": "t2",
+    "name": "Barbie Beach",
+    "department": "Software Development",
+    "title": "Senior Developer",
+    "email": "barbiegirl@company.ie"
+  },
+  {
+    "id": "t3",
+    "name": "Bill Gates",
+    "department": "Software Development",
+    "title": "Very Senior Developer",
+    "email": "gates4prez@company.ie"
+  },
+  {
+    "id": "t4",
+    "name": "Elon Musk",
+    "department": "Toddler Development",
+    "title": "Infant Developer",
+    "email": "musky@company.ie"
+  },
+  {
+    "id": "t5",
+    "name": "Michelle Obama",
+    "department": "Not Software Development",
+    "title": "Just Cool",
+    "email": "O.bah.ma@company.ie"
+  },
+  {
+    "id": "t6",
+    "name": "Richard Branson",
+    "department": "Plane Development",
+    "title": "Island and Aircraft Developer",
+    "email": "ihaveanisland@company.ie"
+  },
+  {
+    "id": "T7",
+    "name": "Ellen Degeneres",
+    "department": "Laughter Development",
+    "title": "Comedic Developer",
+    "email": "dori@company.ie"
+  }
+]

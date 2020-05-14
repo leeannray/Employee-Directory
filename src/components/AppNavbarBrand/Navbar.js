@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
+
 
 const propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -16,34 +16,8 @@ const defaultProps = {
 };
 
 class AppNavbarBrand extends Component {
-  imgSrc(brand) {
-    return brand.src ? brand.src : "";
-  }
 
-  imgWidth(brand) {
-    return brand.width ? brand.width : "auto";
-  }
 
-  imgHeight(brand) {
-    return brand.height ? brand.height : "auto";
-  }
-
-  imgAlt(brand) {
-    return brand.alt ? brand.alt : "";
-  }
-
-  navbarBrandImg(props, classBrand, key) {
-    return (
-      <img
-        src={this.imgSrc(props)}
-        width={this.imgWidth(props)}
-        height={this.imgHeight(props)}
-        alt={this.imgAlt(props)}
-        className={classBrand}
-        key={key.toString()}
-      />
-    );
-  }
 
   render() {
     const { className, children, tag: Tag, ...attributes } = this.props;

@@ -1,28 +1,28 @@
 import React from 'react';
-import {
-  Col,
-  Row,
-  Button,
-  Glyphicon,
-  Panel,
-  ListGroupItem,
-  ListGroup,
-  FormControl,
-} from "react-bootstrap";
-import users from "./users.json";
-import UserList from "./UserList.json";
+// import {
+//   Col,
+//   Row,
+//   Button,
+//   Glyphicon,
+//   Panel,
+//   ListGroupItem,
+//   ListGroup,
+//   FormControl,
+// } from "react-bootstrap";
+import "./users.json";
+
 import './App.css';
 
 import UserList from './components/UserList/UserList';
-import SearchBar from './components/SearchBar/SearchBar';
-import Navbar from './components/AppNavbarBrand/Navbar';
-import AppContainer from './components/Container/Container';
-import UserCard from './components/UserCard';
+import SearchBar from './components/SearchBar/SearchForm';
+// import AppNavbarBrand from './components/AppNavbarBrand/Navbar';
+import Container from './components/Container/SearchContainer';
+import UserCard from './components/UserCard/UserCard';
 
 const filterUser = (searchText, maxResults) => {
   return UserList
-    .filter((user) => {
-      if (user.data.name.toLowerCase().includes(searchText.toLowerCase())) {
+    .filter((users) => {
+      if (users.name.toLowerCase().includes(searchText.toLowerCase())) {
         return true;
       }
       return false;
@@ -47,15 +47,15 @@ export default class App extends React.Component {
     });
   };
 
-  onUserClick = (user) => {
+  onUserClick = (users) => {
     this.setState({
       selectedUser: {
-        name: user.name,
-        id: user.id,
-        title: user.title,
-        department: user.department,
-        manager: user.manager,
-        email: user.email
+        name: users.name,
+        id: users.id,
+        title: users.title,
+        department: users.department,
+        manager: users.manager,
+        email: users.email
 
       },
     });

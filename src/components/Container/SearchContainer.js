@@ -1,51 +1,122 @@
+import API from "../../utils/API";
 import React, { Component } from "react";
-import SearchForm from "./SearchForm";
-import ResultList from "./ResultList";
-import API from "../components/utils/API";
+import SearchBar from "../SearchBar/SearchForm";
+// import UserList from "../UserList/UserList";
+import UserCard from "../UserCard/UserCard"
+import "./SearchContainer.css";
 
-class SearchContainer extends Component {
+class Container extends Component {
+  // Setting the component's initial state
+  //search starts as an empty string
+  //employess and filteredEmployess are empty arrays
+  //By default employees in random order and the first click will trigger then to be in asc order
   state = {
     search: "",
-    results: [],
+    users: [],
+    filteredUsers: [],
+    order: "",
   };
 
-  // When this component mounts, search the user API for employee/users
+  // initialization; what page will display
   componentDidMount() {
-    this.searchUsers("");
+    API.getUsers()
+      .then((res) =>
+        this.setState({
+          users: res.data.results,
+          filteredUsers: res.data.results,
+        })
+      )
+      .catch((err) => console.log(err));
   }
 
-  searchUsers = (query) => {
-    API.search(query)
-      .then((res) => this.setState({ results: res.data.data }))
-      .catch((err) => console.log(err));
-  };
+  //if "name" it's clicked employee are shown by asc/desc order
 
+  sortByName = () => {
+    const filterUsers = this.state.filteredUsers;
+    if (this.state.order === "asc") {
+      const sortUsers = filterUsers.sort((a, b) =>
+        a.name.first > b.name.first ? 1 : -1
+      );
+      console.log(sortUsers);
+
+      this.setState({
+        filteredUsers: sortUsers,
+        order: "desc",
+      });
+    } else {
+      const sortUsers = filterUsers.sort((a, b) =>
+        a.name.first > b.name.first ? -1 : 1
+      );
+      console.log(sortUsers);
+
+      this.setState({
+        filteredUsers: sortUsers,
+        order: "asc",
+      });
+    }
+  };
+  //when input changes, dynamically displays name
   handleInputChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
+    const users = this.state.users;
+    const UserInput = event.target.value;
+    const filteredUsers = users.filter(
+      (user) =>
+        user.name.first.toLowerCase().indexOf(UserInput.toLowerCase()) > -1
+    );
     this.setState({
-      [name]: value,
+      //change the state of  filteredUsers n--> employees that match users
+
+      filteredUsers,
     });
   };
 
-  // When the form is submitted, search the user API for `this.state.search`
-  handleFormSubmit = (event) => {
+  //API call triggered: when page refreshed and application loaded
+  userSearch = () => {
+    API.getUsers()
+      .then((res) =>
+        this.setState({
+          //change states to hold all the data from the API call = all employess --> props
+          //employee will remain the same and filteredUsers will change and passed down during application's life. Employee will always hold all employess.
+          filteredUsers: res.data.results,
+          users: res.data.results,
+        })
+      )
+      .catch((err) => console.log(err));
+  };
+
+  //click event for button
+  handleSearch = (event) => {
     event.preventDefault();
-    this.searchUsers(this.state.search);
+    if (!this.state.search) {
+      alert("Must enter a user name!");
+    }
+    const { users, search } = this.state;
+
+    //filters --> value that matches the value entered in the input box by the user = (search.this.state)
+    const filteredUsers = users.filter((users) =>
+      users.name.toLowerCase().includes(search.toLowerCase())
+    );
+
+    this.setState({
+      filteredUsers,
+    });
   };
 
   render() {
     return (
       <div>
-        <SearchForm
-          search={this.state.search}
-          handleFormSubmit={this.handleFormSubmit}
+        <SearchBar
+          user={this.state.users}
+          handleSearch={this.handleSearch}
           handleInputChange={this.handleInputChange}
         />
-        <ResultList results={this.state.results} />
+        <UserCard
+          results={this.state.filteredUsers}
+          sortByName={this.sortByName}
+        />
       </div>
     );
   }
 }
 
-export default SearchContainer;
+export default Container;

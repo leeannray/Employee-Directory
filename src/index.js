@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import * as serviceWorker from "./registerServiceWorker";
+// import * as serviceWorker from "./registerServiceWorker";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -15,5 +15,5 @@ ReactDOM.render(
 // import registerServiceWorker from './registerServiceWorker';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
-serviceWorker.unregister();
-registerServiceWorker();
+// serviceWorker.unregister();
+// registerServiceWorker();

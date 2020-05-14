@@ -6,13 +6,25 @@ import React from "react";
 
 function UserCard(props) {
   return (
-    <div className="container">
+    <div className="UserCard">
       <div className="card text-center">
-        <div className="card-header">
-          <h2>{props.heading}</h2>
+        <h1 className="card-header" onClick={props.sortByName}>User Name</h1>
+      </div>
+      <div className='card-body'>{props.results.map(result => (
+        <div className="card" key={result.key}>
+          <span className="card-header">{result.name}</span>
+          <span className="email" ><a href={result.email}>{result.email}</a></span>
+          <span className="title">{result.title}</span>
         </div>
-        <div className='card-body'>{props.children}</div>
-        <div className="content"></div>
+      ))
+      }
+      </div>
+    </div>
+  );
+}
+
+
+       /* /* <div className="content"></div>
         <ul>
           <li>
             <strong>Name:</strong> {props.name}
@@ -29,10 +41,5 @@ function UserCard(props) {
         </ul>
       </div>
       <span onClick={() => props.removeUser(props.id)} className="remove">
-        𝘅
-      </span>
-    </div>
-  );
-};
-
+        𝘅*/
 export default UserCard;
