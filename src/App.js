@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-class UserProfiles extends React.Component {
+class UserCard extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -35,7 +35,7 @@ class UserProfiles extends React.Component {
     });
     return (
       <div>
-        <h1>My users are:</h1>
+        <h1>Current Users: </h1>
         {list}
       </div>
     );
@@ -53,7 +53,7 @@ class User extends React.Component {
   }
 }
 
-ReactDOM.render(<UserProfiles />, document.getElementById("root"));
+ReactDOM.render(<UserCard />, document.getElementById("root"));
 
 // import axios from "axios";
 // const proxyurl = "https://cors-anywhere.herokuapp.com/";
