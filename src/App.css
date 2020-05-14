@@ -1,4 +1,4 @@
-h1,
+/* h1,
 p {
   font-family: Roboto;
 }
@@ -17,4 +17,8 @@ body {
 img {
   float: left;
 
+} */
+
+.App {
+  text-align: center;
 }
