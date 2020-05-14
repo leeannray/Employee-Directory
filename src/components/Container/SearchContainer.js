@@ -1,6 +1,6 @@
 import API from "../../utils/API";
 import React, { Component } from "react";
-import SearchBar from "../SearchBar/SearchForm";
+import SearchBar from "../SearchBar/SearchBar";
 // import UserList from "../UserList/UserList";
 import UserCard from "../UserCard/UserCard"
 import "./SearchContainer.css";

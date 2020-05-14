@@ -1,16 +1,64 @@
 import axios from "axios";
 
-componentDidMount(){
-  axios.get('https://randomuser.me/api/?results=10&inc=name,registered&nat=fr')
-  .then(json => json.data.results.map(result => (
-    {
-      name: `${result.name.first} ${result.name.last}`,
-      id: result.registered
-    })))
-  .then(newData => console.log(newData))
-}
+componentDidMount() {
+  axios.get(
+    'https://randomuser.me/api/?results=10&inc=name,registered&nat=us'
+  )
+    .then(json => json.data.results.map(result => (
+      {
+        name: `${result.name.first} ${result.name.last}`,
+        id: result.registered
+      }
+    )
+    )
+    )
+    .then(newData => this.setState(
+      { users: newData, store: newData }
+    ))
+  .catch (
+  error => alert(error)
+  );
+};
 
-export default App;
+filterNames(e){
+  this.setState({
+    users: this.state.store.filter(item => item.name.toLowerCase().includes(e.target.value.toLowerCase()
+    ));
+  }
+  )
+};
+
+export default class UserList extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {person: []};
+  }
+
+  componentDidMount() {
+    this.UserList();
+  }
+
+  UserList() {
+    $.getJSON('https://randomuser.me/api/')
+      .then(({ results }) => this.setState({ person: results }));
+  }
+
+  render() {
+    const persons = this.state.person.map((item, i) => (
+      <div>
+        <h1>{ item.name.first }</h1>
+        <span>{ item.cell }, { item.email }</span>
+      </div>
+    ));
+
+    return (
+      <div id="layout-content" className="layout-content-wrapper">
+        <div className="panel-list">{ persons }</div>
+      </div>
+    );
+  }
+};
 // class App extends React.Component {
 //   state = {
 //     users,
@@ -42,66 +90,3 @@ export default App;
 //           || PerformanceResourceTiming.email.replace(/\D/g, "").includes(name)
 //           || person.email.includes(name)
 //       }),
-//       search: name
-
-//   })
-// }
-//   render() {
-//     return (
-//       <div className="App">
-//         <div className="nav navbar">
-//           <Navbar />
-//         </div>
-//         <div className="container py-3 text-center">
-//           <SearchBar />
-//           <div className="card">
-//             <UserList />
-//             <input type="text" placeholder="Search by User Name" className="form-control text left" onChange={(e) => this.searchFilter(e.target.value)} />
-
-//       </div>
-
-//        <div className="filter d-flex justify-content-between h4">
-//               <div className="">
-//                 FIRST NAME
-//                 <i className={this.state.first > 0 ? "fas fa-sort-amount-down-alt" : "fas fa-sort-amount-up-alt"}
-//                   onClick={() => { this.handleNameSort("first", this.state.first); this.setState({ first: -this.state.first, sort:"first" }) }}></i>
-//               </div>
-
-//               <div className="">
-//                   LAST NAME
-//                 <i className={this.state.last > 0 ? "fas fa-sort-amount-down-alt" : "fas fa-sort-amount-up-alt"}
-//                   onClick={() => { this.handleNameSort("last", this.state.last); this.setState({ last: -this.state.last, sort:"last" }) }}></i>
-//               </div>
-
-//               <div className="">
-//                 EMAIL
-//                 <i className={this.state.email > 0 ? "fas fa-sort-amount-down-alt" : "fas fa-sort-amount-up-alt"}
-//               onClick={() => { this.handleSort("email", this.state.email); this.setState({ email: -this.state.email, sort: "email" }) }}></i>
-//             </div>
-//           </div>
-//         </div>
-
-//          <div>
-//           {this.state.search? `Searching for "${this.state.search}" : `: ""}
-//           Showing {this.state.employees.length} matching users
-//           {this.state.sort? `, by ${this.state.sort} ${this.state[this.state.sort] < 0? "A-Z":"Z-A"}` : ""}
-//         </div>
-
-//         <div className="container flex-wrap">
-//           {
-//             this.state.users.map((users) => {
-//               //console.log(user)
-//               return (
-//                 <UserList
-//                   person={user}
-//                 />
-//               )
-//             })
-//           }
-//         </div>
-//       </div>
-//     );
-//   }
-// };
-
-// export default App;
