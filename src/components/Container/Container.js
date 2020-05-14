@@ -9,3 +9,11 @@ function Container(props) {
 }
 
 export default Container;
+
+export AppContainer from "./Header";
+
+export AppNavbarBrand from "../NavbarBrand/Navbar";
+export AppSwitch from "../Switch/Switch";
+export UserCard from "../UserCard/UserCard";
+export SearchBar from "../SearchBar/SearchForm";
+export UserList from "../UserList/UserList";
