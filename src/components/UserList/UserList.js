@@ -1,44 +1,48 @@
 import React from "react";
+import { createSorter } from "./Sort";
 
-function UserList(props) {
-  // console.log(props);
-  return (
-    <div className="personCard card mt-5" key={props.person.id.value}>
-      <div>
-        <img
-          className="personThumb"
-          src={props.person.picture.medium}
-          alt={props.person.name.first + props.person.name.last}
-        />
-      </div>
-      <div className="col h5">
-              {props.person.name.first}
-              {props.person.name.last}
-      </div>
-          <div className="col">
-        {" "}
-            {props.person.dob.date.split("T")[0]}
-      </div>
-      <hr />
-      <div className="col">
-        {" "}
-              <i className=""></i>
-              {props.person.gender}
-      </div>
-      <hr />
-      <div className="col">
-        {" "}
-              <i className=""></i>
-              {props.person.phone}
-      </div>
-      <hr />
-      <div className="col">
-        {" "}
-              <i className=""></i>
-              {props.person.email}
-      </div>
-    </div>
-  );
-}
+export default class List extends React.Component {
+  state = {};
 
-export default UserList;
+  componentDidMount() {
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then(this.onLoad);
+  }
+
+  parseData(response) {
+    return response.data;
+  }
+
+  onLoad = (data) => {
+    this.setState({
+      data: this.parseData(data),
+    });
+  };
+
+  render() {
+    const { data } = this.state;
+
+    return data ? this.renderData(data) : this.renderLoading();
+  }
+
+  renderData(data) {
+    if (data && data.length) {
+      return (
+        <div>
+          {data.map((item) => (
+            <div key={item.id}>
+              <a href={`mailto:${item.email}`}>{item.name}</a> {item.company}
+            </div>
+          ))}
+        </div>
+      );
+    } else {
+      return <div>No items found</div>;
+    }
+  }
+
+  renderLoading() {
+    return <div>Loading...</div>;
+  }
+};

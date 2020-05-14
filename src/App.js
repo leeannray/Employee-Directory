@@ -1,83 +1,28 @@
-import React from 'react';
-// import {
-//   Col,
-//   Row,
-//   Button,
-//   Glyphicon,
-//   Panel,
-//   ListGroupItem,
-//   ListGroup,
-//   FormControl,
-// } from "react-bootstrap";
-import "./users.json";
+import API from "./API";
 
-import './App.css';
-
-import UserList from './components/UserList/UserList';
-import SearchBar from './components/SearchBar/SearchForm';
-// import AppNavbarBrand from './components/AppNavbarBrand/Navbar';
-import Container from './components/Container/SearchContainer';
-import UserCard from './components/UserCard/UserCard';
-
-const filterUser = (searchText, maxResults) => {
-  return UserList
-    .filter((users) => {
-      if (users.name.toLowerCase().includes(searchText.toLowerCase())) {
-        return true;
-      }
-      return false;
-    })
-    .slice(0, maxResults);
-};
-
-var maxResults = 4;
-
-export default class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      selectedUser: UserList[0].data,
-      filteredUser: filterUser("", maxResults),
-    };
+class App extends Component {
+  componentDidMount() {
+    this.fetchData();
   }
 
-  onSearch = (event) => {
-    this.setState({
-      filteredUser: filterUser(event.target.value, maxResults),
-    });
-  };
-
-  onUserClick = (users) => {
-    this.setState({
-      selectedUser: {
-        name: users.name,
-        id: users.id,
-        title: users.title,
-        department: users.department,
-        manager: users.manager,
-        email: users.email
-
-      },
-    });
-  };
+  fetchData() {
+    const url = "https://randomuser.me/api/?results=50&nat=us,dk,fr,gb";
+    return fetch(url)
+      .then((response) => response.json())
+      .then((parsedJSON) => this.setState({ results: parsedJSON.results }))
+      .catch((error) => console.log(error));
+  }
 
   render() {
     return (
-      <Container lg={8} md={7} sm={4} lgOffset={2}>
-        <Container lg={6}>
-          <SearchBar
-            onSearch={this.onSearch}
-            userData={this.state.filteredUser}
-            onUserClick={this.onUserClick}
-          />
-        </Container>
-        <Container lg={6}>
-          <UserCard selectedUser={this.state.selectedUser} />
-        </Container>
-      </Container>
+      <div className="App">
+        <API dataObject={this.state.results} />
+      </div>
     );
   }
-};
+}
+
+export default App;
 // class App extends React.Component {
 //   state = {
 //     users,

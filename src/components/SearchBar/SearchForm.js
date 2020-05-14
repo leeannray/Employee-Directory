@@ -29,7 +29,7 @@ function SearchBar(props) {
               <button
                 type="submit"
                 value=""
-                className="btn searchBttn"
+                className="button searchBtn"
                 onClick={props.handleSearch}
               >
                 SEARCH
