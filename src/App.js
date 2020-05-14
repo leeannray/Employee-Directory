@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-import UserList from './UserCard/UserList';
+import UserList from './components/UserCard/UserList';
 import SearchBar from './components/SearchBar/SearchBar';
 
 class App extends React.Component {
