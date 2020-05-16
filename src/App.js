@@ -1,12 +1,16 @@
 
 // import axios from "axios";
 import React from 'react';
-import UserCard from "../src/components/UserCard/UserCard";
+import UserList from "../src/components/UserList/UserList";
 
 import './App.css';
 
 function App() {
-  return <UserCard />
+  return (
+    <div>
+      <UserList />
+    </div>
+  );
 }
 
 export default App;

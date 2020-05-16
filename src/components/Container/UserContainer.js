@@ -1,11 +1,25 @@
-import React, { Component } from "react";
-import UserCard from "./UserCard";
-import Row from "./Row";
-import Col from "./Col";
-import UserCard from "./UserCard";
-import SearchForm from "./SearchForm";
-import UserDetail from "./UserDetails";
-import API from "../components/utils/API";
+import React, { useState, useEffect } from "react";
+import Container from "../Container/Container";
+import Navbar from "../Navbar/Navbar";
+import Logo from "../Logo";
+import NavbarRight from "../Navbar/NavbarRight";
+import Sort from "../Sort/Sort";
+import SortSelect from "../Sort/SortSelect";
+import Filter from "../Filter/Filter";
+import Table from "../UserTable/UserTable";
+import TableHead from "./UserTable/TableHead";
+import TableResults from "./UserTable/TableResults";
+import API from "../utils/API";
+import users from "../../users.json";
+
+function UserContainer() {
+    const [allEmployees] = useState([...employeesList]);
+    const [maleEmployees] = useState(employeesList.filter(employee => employee.gender === "male"));
+    const [femaleEmployees] = useState(employeesList.filter(employee => employee.gender === "female"));
+
+    const [employees, setEmployees] = useState(allEmployees);
+    const [sortOption, setSortOption] = useState("id");
+    const [filterOption, setFilterOption] = useState("all");
 
 class UserContainer extends Component {
   state = {
