@@ -1,45 +1,58 @@
 {
-    "name": "ground-hw-19",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "axios": "^0.19.0",
-        "react": "^168.6",
-        "react-dom": "^16.8.6",
-        "react-scripts": "3.0.1"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
-    },
-    "eslintConfig": {
-        "extends": "react-app"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.1.0",
-        "@babel/core": "^7.1.0",
-        "@babel/preset-env": "^7.1.0",
-        "@babel/preset-react": "^7.0.0",
-        "babel-loader": "^8.0.2",
-        "css-loader": "^1.0.0",
-        "gh-pages": "^2.2.0",
-        "style-loader": "^0.23.0",
-        "webpack": "^4.19.1",
-        "webpack-cli": "^3.1.1",
-        "webpack-dev-server": "^3.1.8"
-    }
+  "name": "employeedirectoryreact",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.19.0",
+    "react": "^168.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "css-loader": "^1.0.0",
+    "gh-pages": "^2.2.0",
+    "style-loader": "^0.23.0",
+    "webpack": "^4.19.1",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "description": "An employee directory created using React # Unit 19 React Homework: Employee Directory",
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leenorman/Employee-Directory.git"
+  },
+  "author": "Lee Ann Norman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leenorman/Employee-Directory/issues"
+  },
+  "homepage": "https://github.com/leenorman/Employee-Directory#readme",
+  "keywords": []
 }
